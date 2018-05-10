@@ -1,13 +1,15 @@
-﻿
-BSCVRoboticsProject
+﻿ 
+BSCVRoboticsProject 
 ===================
 
-Technical report on the Coperative task between Turtlebot2 and PhantomX Pincher-arm
------------------------------------------------------------------------------------
 
+## Technical report on the Coperative task between Turtlebot2 and PhantomX Pincher-arm
 
-__Table of contents__
---
+![Project](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/Screenshot%20from%202018-05-10%2019:04:04.png)
+=======================================================================================================================
+
+Table of contents
+------------------
 
 I. [PRESENTATION](https://github.com/Macaulay123/BSCVRoboticsProject#i-presentation)
 
@@ -36,6 +38,8 @@ V. [PROJECT EXECUTION](https://github.com/Macaulay123/BSCVRoboticsProject#v-proj
    * [Running the PhantomX pincher-arm](https://github.com/Macaulay123/BSCVRoboticsProject#running-the-phantomx-pincher-arm) 
    * [Planning of turtlebot trajectory](https://github.com/Macaulay123/BSCVRoboticsProject#planning-of-turtlebot-trajectory) 
    * [Problem with Obstacle Avoidance](https://github.com/Macaulay123/BSCVRoboticsProject#problem-with-obstacle-avoidance)
+
+
 
 Acknowledgments
 ---------------
@@ -119,9 +123,7 @@ The project is about the implementation of the complete scenario of the turtlebo
 
 The project implementation is primarily based on the navigation of the turtlebot on a created map for the turtlebot by giving it a goal position command on the map and the turtlebot could plan its path based on its initial position on the map and move to the goal position executing its trajectory using the laser scan sensor and as well dynamically avoid obstacles along its path.
 
-
-
-
+![Scenario](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/turtlebot_arm.JPG)
 
 IV. PROJECT SETUP
 -----------------
@@ -132,6 +134,7 @@ __*On the turtlebot2:*__
 
 The type of the laser scan sensor attached to our turtlebot2 is the RPLIDAR 2D laser sensor. 
 
+![Laser sensor](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/RPLidar.JPG)
 
 The rplidar-turtlebot2 is the Ros package designed to add the sensor to the turlebot2. This package can be clone and use from the repository; https://github.com/roboticslab-fr/rplidar-turtlebot2.git. 
 Kindly refer to the README on the repository and follow the guides on its installation.
@@ -161,6 +164,8 @@ We have created a map from the bag file we recorded when the turlebot was manual
 After bags is finished playing then the map is obtained from the map server with the command;
 
 `$ rosrun map_server map_saver -f ClassMap`
+
+![map](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/Screenshot%20from%202018-05-08%2021:29:57.png)
 
 #### Installation of packages
 
