@@ -165,15 +165,17 @@ After bags is finished playing then the map is obtained from the map server with
 
 `$ rosrun map_server map_saver -f ClassMap`
 
+Picture of map obtained;
+
 ![map](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/map.png)
 
 #### Installation of packages
 
-In order to run the complete scenario for the project, a number of packages was put together including our own created packager with some modifications of script files, and parameters.
+In order to run the complete scenario for the project, a number of packages was put together including our own created packages with some modifications of script files, and parameters.
 
-The following packages will need be installed in the work space for the execution of the scenario.
+The following packages will need to be installed in the Catkin workspace for the execution of the scenario.
 
-* __To launch the RPLAIDAR sensor together with the turtlebot minimal launch and the *AMCL* launch in the *turtlebot_navigation* stack package.__
+* __To launch the RPLIDAR sensor together with the turtlebot minimal launch and the *AMCL* launch in the *turtlebot_navigation* stack package.__
 
 `$ cd ~/ros/indigo/catkin_ws/src`
 
