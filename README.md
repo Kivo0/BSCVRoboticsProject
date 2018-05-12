@@ -165,7 +165,7 @@ After bags is finished playing then the map is obtained from the map server with
 
 `$ rosrun map_server map_saver -f ClassMap`
 
-![map](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/Screenshot%20from%202018-05-08%2021:29:57.png)
+![map](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/map.png)
 
 #### Installation of packages
 
