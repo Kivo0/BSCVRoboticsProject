@@ -11,7 +11,7 @@ BSCVRoboticsProject
 Acknowledgments
 ---------------
 
-Prof. Raph Seulin, Mr. Nathan CROMBEZ, Ms. Yifei ZHANG, Mr. Raphael DUVERNE, and Marc BLANCHON
+Prof. Raph Seulin, Mr. Nathan CROMBEZ, Ms. Yifei ZHANG, Mr. Raphael DUVERNE, Marc BLANCHON
 
 Table of contents
 ------------------
