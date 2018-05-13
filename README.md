@@ -8,6 +8,11 @@ BSCVRoboticsProject
 ![Project](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/Screenshot%20from%202018-05-10%2019:04:04.png)
 =======================================================================================================================
 
+Acknowledgments
+---------------
+
+Prof. Raph Seulin, Mr. Nathan CROMBEZ, Ms. Yifei ZHANG, Mr. Raphael DUVERNE, and Marc BLANCHON
+
 Table of contents
 ------------------
 
@@ -39,28 +44,19 @@ V. [PROJECT EXECUTION](https://github.com/Macaulay123/BSCVRoboticsProject#v-proj
    * [Planning of turtlebot trajectory](https://github.com/Macaulay123/BSCVRoboticsProject#planning-of-turtlebot-trajectory) 
    * [Problem with Obstacle Avoidance](https://github.com/Macaulay123/BSCVRoboticsProject#problem-with-obstacle-avoidance)
  
-VII. [CONCLUSION](https://github.com/Macaulay123/BSCVRoboticsProject#conclusion)
+VII. [CONCLUSION](https://github.com/Macaulay123/BSCVRoboticsProject#vii-conclusion)
 
-VIII. [REFERENCES](https://github.com/Macaulay123/BSCVRoboticsProject#references)
+VIII. [REFERENCES](https://github.com/Macaulay123/BSCVRoboticsProject#viii-references)
 
 
-
-Acknowledgments
----------------
-
-The achievement of this project required a lot of guidance and assistance from many people and we are extremely privileged to have got this all along the completion of our project.
-We would like to especially thank our Robotics Lab supervisors, Mr. Nathan CROMBEZ and Ms. Yifei ZHANG who gave us continuous guidance, assistance, and inspiration to continue efficiently working on our project and obtain expecting results. We would like to thank Mr. Raphael DUVERNE for his advice, help, aid in troubleshooting the robot. Also, we would like to extend our sincere esteems to the Master student Marc BLANCHON for his timely support.
-Last but not least, we would like to present a special thanks to our families, for their love, understanding, encouragement, and confidence in us.
 
 
 I. PRESENTATION
 ------------
 
-
 The present report is part of our semester project in the robotics engineering module. Working in ROS environment provides us a new approach to deal with large number of robots such as the Turtlebot 2 and the PhantomX Pincher arm. Those current autonomous mobile service robots are custom manufactured for research environments and limiting their availability. 
  The objective is to design and implement a cooperative task for a low- cost service robot based on TurtleBot 2 platform and the Pincher-arm.
  
-
 II. PROJECT OVERVIEW
 --------------------
 
@@ -83,7 +79,7 @@ then we must source the setup after performing some settings on Workstation and 
 
  we can edit the bash file by:
  
- `$ gedit ~/. bashrc`
+ `$ gedit ~/.bashrc`
  
   To control our turtlebot which is the netbook(Asus) via the workstation(Dell). 
   
@@ -123,9 +119,9 @@ This bag file was to record all topics which was used to create the map. Further
 III. PROJECT DESCRIPTION
 ------------------------
 
-The project is about the implementation of the complete scenario of the turtlebot and the robotic PhantomX pincher-arm where the turtlebot is made to navigate to the position of the arm from its initial position, on arrival at the arm position, the arm will have to pick a cube that will be positioned on a specific location on the table and place it on the turtlebot then the turtlebot will take the cube to another location which in our case its the previous location of the turtlebot.
+The project is about the implementation of the complete scenario of the turtlebot and the robotic PhantomX pincher-arm where the turtlebot is made to navigate to the position of the arm from its initial position, on arrival at the arm position, the arm will have to pick a cube that will be positioned on a specific location on the table and place it on the turtlebot then the turtlebot will take the cube to another location which in our case is the initial position of the turtlebot.
 
-The project implementation is primarily based on the navigation of the turtlebot on a created map for the turtlebot by giving it a goal position command on the map and the turtlebot could plan its path based on its initial position on the map and move to the goal position executing its trajectory using the laser scan sensor and as well dynamically avoid obstacles along its path.
+The project implementation is primarily based on the navigation of the turtlebot on a created map by giving it a goal position command on the map and the turtlebot could plan its path with reference to its initial position on the map and navigate to the goal position executing its trajectory using the laser scan sensor and as well avoid dynamically obstacles along its path.
 
 ![Scenario](https://github.com/Macaulay123/BSCVRoboticsProject/blob/master/project_pictures/turtlebot_arm.JPG)
 
@@ -153,7 +149,7 @@ Kindly refer to the README on the repository and follow the guides on its instal
 
 #### Map Creation
 
-We have created a map from the bag file we recorded when the turlebot was manually controlled with a Joypad through the space where all the task were to be carried out. The data required for the creation of the map is the scan topic recorded in the bag file which was published from the RPLIDAR 2D scan sensor we previously added to the turtlebot. By following the command lines given below we were able to successfully create the map called _`ClassMap.pgm`_ and its corresponding _`.yaml file`_  :_`ClassMap.yaml.`_
+We have created a map from the bag file we recorded when the turlebot was manually controlled with a Joypad through the space where all the task are to be carried out. The data required for the creation of the map is the scan topic recorded in the bag file which was published from the RPLIDAR 2D scan sensor we previously added to the turtlebot. By following the command lines given below we were able to successfully create the map called _`ClassMap.pgm`_ and its corresponding _`.yaml file`_  :_`ClassMap.yaml.`_
 
 
 `$ rosmake gmapping`
@@ -225,7 +221,7 @@ haven completed all the set up on the the workstation and on the turlebot netboo
 #### Navigation
 
 In this part of the project we want to be able to assign our map to the turtlebot to navigate on, and as well assume a default position of the turtlebot on the map in other to be able to give the turtlebot specific goal position command to reach. 
-To achieve this we considered using the turtlebot_navigation stack package which uses the *AMCL* package. We have created our own package called *`turtlebot_nav`* it basically contains the launch files that is use to organize the processes involved for the turtlebot navigation. The content of this launch file is displayed below.
+To achieve this we considered using the turtlebot_navigation stack package which uses the *AMCL* package. We have created our own package called *`turtlebot_nav`* it basically contains the launch files that is use to organize the processes involved for the turtlebot navigation processes. The content of this launch file is displayed below.
 
 ```
 <launch>
@@ -247,33 +243,27 @@ To achieve this we considered using the turtlebot_navigation stack package which
 The first part of the the code simply launches the remap_rplidar_minimal launch file from the *turtlebot_le2i* package. This launche file in itself does the following:
 	*remap the 'cmd_vel_mux/input/navi' to 'cmd_vel'*
 	*launches the turtlebot2 minimal launch,*
-sets the envinronment variable for the 2D rplaidar scan sensor rather than the  default which is the 3D-sensor, and bring-up the 2D rplidar scan sensor.
-This part put together basically enables us to be able to navigate our turtlebot using the scan message published by the 2D rplidar scan sensor on the *cmd_vel* topic
+sets the envinronment variable for the rplaidar 2D scan sensor rather than the  default which is the 3D-sensor, and bring-up the rplidar 2D scan sensor.
+This part put together basically enables us to be able to navigate our turtlebot using the scan message published by the 2D Rplidar scan sensor on the *cmd_vel* topic
  
 The second part of our launch file code launches the amcl_demo.launch from the turtlebot_navigation package, and sets the our map as an argument to the mapserver for *amcl* and then set the assumed initial position of the turtlebot on the map (its linear position and the orientation).
-With this process we can no convinntly place our turtlebot in the marked initial position and give it a goal command o the map for it to navigate to by simply running the following command:
+With this process we can convinntly place our turtlebot on the marked initial position and give it a goal command on the map for it to navigate to by simply running the following command:
 
 __On the turtlebot2:__
 
-`$ roslaunch turtlbot_nav RP_nav_turt.launch`
+`$ roslaunch turtlebot_nav RP_nav_turt.launch`
  
 __On the work station:__
 
 `$ roslaunch turtlebot_pose_commands  tb_goal_pose.launch`
 
-the __`tb_goal_pose.launch`__ is a lauunch file that simply contain a command to a target goal pose on the map which can take any value of the position and orientation of the turtlebot on the map depending on the user target goal position.
-
-
-
-
-
-This command can as well be run directly on the workstation by publishing on the the topic _/move_base_simple/goal,_ however for ease and organisation of our work, we have chosen to rather have this launch file to use. 
+The __`tb_goal_pose.launch`__ is a lauunch file that simply contain a command to a target goal pose on the map which can take any value of the position and orientation of the turtlebot on the map depending on the user target goal position.
+This command can as well be run directly on the workstation by publishing on the the topic _/move_base_simple/goal,_ however for convinience and the organisation of our work, we have chosen to rather have these launch files to use. 
 
 
 #### Obstacle avoidance
 
-In this case we want the turlebot to be able to dynamically avoid obstacles along its path to it goal position. The turtlebot_navigation package performs this operation by default however, the package was created to work with the 3D sensor environment variable which seam to publishes the velocity commands on a different topic for the turtlebot base compared to the laser scan environment variable that seems publish its velocity commands to the _`cmd_vel_mux/input/navi`_ and as a result the turlebot base receives two different velocity commands  on different topics and will execute the one with the highest priority and then conitinues with the other with lesser piority when the first stops. this will make the turtlebot continue to move in its regular path even when there is an obstacle.
-This problem was corrected eventualy by first remaping the   _`cmd_vel_mux/input/navi`_ to _`cmd_vel`_ as shown earlier in the remap_rplidar_minimal.launch then, it was also very impotant to change the parameter settings of the _`turtlebot_navigation`_ by following the procedure highlighted bellow on the turtlebot which also requires administrative permission.
+In this case we want the turtlebot to be able to avoid dynamical obstacles along its path to its goal position. The turtlebot_navigation package performs this operation by default however, the package was created to work with the 3D sensor environment variable which seem to be responsible for the response to the velocity commands received on the _`cmd_vel`_  topic for the turtlebot base for obstacle avoidance. The Rplidar laser scan environment variable seems to publish its velocity commands to the _`cmd_vel_mux/input/naviand`_ as a result the turtlebot base receives two different velocity commands on different topics.  The topic to be executed is the one with the highest priority and then continues with the other with a lesser priority when the first stops.  Because of this, the turtlebot will continue to move in its regular path even when there is an obstacle. Also by default, the _amcl_ package sets the parameters for its obstacle avoidance to be responsive to the command velocity received on the _`cmd_vel`_. This problem was corrected eventually by first remapping the _`cmd_vel_mux/input/navi`_ to _`cmd_vel`_ as shown earlier in the __remap_rplidar_minimal.launch__, and it is also very important to change the parameter settings of the turtlebot_navigation by following the procedure highlighted below on the turtlebot which also requires administrative permission.
 
 * move to the _turtlebot_navigation_ directory,
 
@@ -300,7 +290,7 @@ Now by running the commands given below on the terminals
 
 __On the turtlebot2:__
 
-`roslaunch turtlbot_nav RP_nav_turt.launch`
+`roslaunch turtlebot_nav RP_nav_turt.launch`
  
 __On the work station:__
 
@@ -312,12 +302,12 @@ you will have the turtlebot navigate to the given goal pose on the map and will 
 #### PhantomX pincher arm pick and place Operation
 
 The robotic arm operation was to pick a cube from the table on which it was mounted and place the cube on the turtlebot when the turtlebot arrive to the position of the table.
-Since the idea was to manual control the robotic arm to pick the cube and place it on the turtlebot, a test script _`pick_and_place.py`_ in _turtlebot_pose_commands/bin_ directory was used together with the _`turtlebot_arm_moveit_config`_ package to control the arm to go to a marked point on the table to pick the cube.
+Since the idea was to manual control the robotic arm to pick the cube and place it on the turtlebot, a script named _`pick_and_place.py`_ in _turtlebot_pose_commands/bin_ directory was used together with the _`turtlebot_arm_moveit_config`_ package to control the arm to go to a marked out point on the table to pick the cube.
 By running the command below, we were able to achieve the robotic arm pick and place operation.
 
 __On the turtlebot2:__
 
-`roslaunch turtlbot_nav RP_nav_turt.launch`
+`roslaunch turtlebot_nav RP_nav_turt.launch`
 
 __On the work station:__
 
@@ -331,7 +321,7 @@ The complete scenario of our project can be executed in a stream by following th
 
 __On the turtlebot2:__
 
-`roslaunch turtlbot_nav RP_nav_turt.launch`
+`roslaunch turtlebot_nav RP_nav_turt.launch`
 
 __On the work station:__
 
@@ -354,13 +344,13 @@ _robotic arm pick and place operation_
 
 `roslaunch turtlebot_pose_commands  arm_pick_and_place.launch`
 
-after the completion of the arm pick and place operation, you one will have to kill the operation, and also the `turtlbot_nav RP_nav_turt.launch` operation on the turlebot, then you can continue with the process below
+after the completion of the arm pick and place operation, you one will have to kill all operation, and also the `turtlbot_nav RP_nav_turt.launch` operation on the turlebot, then you can continue with the process below
 
 __On the turtlebot2:__
 
 _to launch the turtlebot with its current position on the map_
 
-`roslaunch turtlbot_nav RP_nav_turt2.launch`
+`roslaunch turtlebot_nav RP_nav_turt2.launch`
 
 
 __On the work station:__
@@ -380,26 +370,24 @@ _fourth pose command (takes the turtlebot to its final destination on the map)_
 ------------------------------------------------------------------------------------------------------
 
 
-
-
 VI. Bugs
 --------
 
 #### Running the PhantomX pincher arm
 
 
-There seems to be no package that was more efficient than the turtlebot_arm package which is supposed to run the robotic arm with the turtlebot2 simultaneusly. A modified version of that package was used for the project, which was cloned from the repository https://github.com/NathanCrombez/turtlebot_arm which we were able to run the robotic arm independent of the turtlebot successfully, however, with some warnings on the terminal. Those warnings prevent the turtlebot for further operation like giving it a new goal pose command. This was the reason we must kill all operation on the terminal and launch back the _RP_nav_turt2.launch_ before giving the turtlebot its consequent goal pose command as indicated above in the [project execution](https://github.com/Macaulay123/BSCVRoboticsProject#v-project-execution).
+There seems to be no package that was more efficient than the turtlebot_arm package which is supposed to run the robotic arm and the turtlebot2 together. A modified version of that package is used for the project, which was cloned from the repository https://github.com/NathanCrombez/turtlebot_arm we were able to run the robotic arm independent of the turtlebot successfully, however, with some warnings on the terminal. Those warnings prevent the turtlebot for further operation like giving it a new goal pose command. This was the reason we must kill all operation on the terminal and launch back the _RP_nav_turt2.launch_ before giving the turtlebot its consequent goal pose command as indicated above in the [project execution](https://github.com/Macaulay123/BSCVRoboticsProject#v-project-execution).
 
 #### Planning of the Turtlebot Trajectory
 
 
- with the turtlebot_navigation package it was quite difficult to give certain goal commands to the turtlebot depending on its initial orientation. The turtlebot would take more time to plan its trajectory to a target goal position if its initial orientation were about 180 degrees and so for a more effective planning of the turtlebot trajectory, it was required that we give the turtlebot goal position commands relative to its initial orientation. This was the reason we had to split the goal position command in the project scenario from two to four for a faster and more effective execution of the project. 
+It was quite difficult to give certain goal commands to the turtlebot depending on its initial orientation. The turtlebot would take more time to plan its trajectory to a target goal position if its initial orientation were about 180 degrees and so for a more effective planning of the turtlebot trajectory, it was required that we give the turtlebot goal position commands relative to its initial orientation. This was the reason we had to split the goal position command in the project scenario from two to four different positions for a faster and more effective execution of the project. 
 This problem is because of the limitation in tuning the parameters of the  _`AMCL`_  package which was really complicated since we had to tune different parameters yet the function of one parameter always seem contradictory to another, making the operation of the robot erratic.
 
 #### Problem with Obstacle Avoidance
 
 
- this also had a lot to do with the parameter settings of the local and global costmap parameters of the _`AMCL`_ package. This involve the turtlebot perceiving the table at the position of the robot arm as an obstacle and so finding it difficult to move closer to the table. By adjusting the tolerance of the distance between the turtlebot and the obstacle will result in in turtlebot getting too close to the obstacle in other cases and a result colliding with the obstacle while trying to avoid it. We were able to resolve this to minimal by allowing the turtlebot reach the position from its side by taking its trajectory off the direction of the table and providing an extension to the turtlebot that makes it able to reach the robot arm at a reasonable distance from the table.
+this also had a lot to do with the parameter settings of the local and global costmap parameters of the _`AMCL`_ package. This involve the turtlebot perceiving the table at the position of the robot arm as an obstacle and so finding it difficult to move closer to the table. By adjusting the tolerance of the distance between the turtlebot and the obstacle will result in in turtlebot getting too close to the obstacle in other cases and a result colliding with the obstacle while trying to avoid it. We were able to resolve this to minimal by allowing the turtlebot reach the position from its side by taking its trajectory off the direction of the table and providing an extension to the turtlebot that makes it able to reach the robot arm at a reasonable distance from the table.
 
 
 
@@ -421,9 +409,13 @@ VIII. REFERENCES
  * [RPlaider sensor](https://github.com/roboticslab-fr/rplidar-turtlebot2)
  * [Turtlebot_arm package](https://github.com/NathanCrombez/PhantomXPincherArmROS)
 
-Project repositories:
+__Project repositories:__
+
 [Macaulay Sadiq](https://github.com/Macaulay123/BSCVRoboticsProject)
 
+[Deogratias Lukamba Nsadisa](https://github.com/nsadiasluk/Robotics-Engineering-Project)
+
+[Antwi Kwaku Ebenezer](https://github.com/ebenezer11/BSCVRoboticsProject)
 
 
 
