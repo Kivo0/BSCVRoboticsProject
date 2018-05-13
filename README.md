@@ -38,6 +38,10 @@ V. [PROJECT EXECUTION](https://github.com/Macaulay123/BSCVRoboticsProject#v-proj
    * [Running the PhantomX pincher-arm](https://github.com/Macaulay123/BSCVRoboticsProject#running-the-phantomx-pincher-arm) 
    * [Planning of turtlebot trajectory](https://github.com/Macaulay123/BSCVRoboticsProject#planning-of-turtlebot-trajectory) 
    * [Problem with Obstacle Avoidance](https://github.com/Macaulay123/BSCVRoboticsProject#problem-with-obstacle-avoidance)
+ 
+VII. [CONCLUSION](https://github.com/Macaulay123/BSCVRoboticsProject#conclusion)
+
+VIII. [REFERENCES](https://github.com/Macaulay123/BSCVRoboticsProject#references)
 
 
 
@@ -373,6 +377,8 @@ _fourth pose command (takes the turtlebot to its final destination on the map)_
 #### Video
 
 [![SCENARIO](http://img.youtube.com/vi/KuOxycOS2-k/0.jpg)](http://www.youtube.com/watch?v=KuOxycOS2-k)
+------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -397,6 +403,26 @@ This problem is because of the limitation in tuning the parameters of the  _`AMC
 
 
 
+VII. CONCLUSION
+----------------------
+
+The project described the design and implementation of a turtlebot cooperative task with robotic arm. We were able to build the map, integrate the Rplidar laser sensor and test the avoidance obstacle on the turtlebot as well as the pick and place with the PhantomX pincher arm. In a nutshell, we can say that the overall scenario was executed successfully. Further interest will be on how to remove the bugs finding an adequate package that could run the pincher arm separately. As future work, we will be glad to implement, at latter stage, the ROS Smach to run the sequence of the operations.
+
+
+VIII. REFERENCES
+----------------
+
+ * R. Patrick Goebel, ROS by Example: A do-it-yourself guide to the robot Operating System, pi      robot production,jan 2015, vol1.
+ * R. Patrick Goebel, ROS by Example: A do-it-yourself guide to the robot Operating System, pi      robot production,jan 2015, vol2.
+ 
+ * [ROS WIKI](http://wiki.ros.org/)
+ * [Turtlebot2](https://www.turtlebot.com/turtlebot2/)
+ * [PhantomX Pincher Arm](http://www.trossenrobotics.com/p/PhantomX-Pincher-Robot-Arm.aspx)
+ * [RPlaider sensor](https://github.com/roboticslab-fr/rplidar-turtlebot2)
+ * [Turtlebot_arm package](https://github.com/NathanCrombez/PhantomXPincherArmROS)
+
+Project repositories:
+[Macaulay Sadiq](https://github.com/Macaulay123/BSCVRoboticsProject)
 
 
 
